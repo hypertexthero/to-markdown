@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>to-markdown.js - an HTML to Markdown converter written in JavaScript</title>
+<link rel="stylesheet" href="normalise.css"></link>
+<style>
+  body {
+    padding:1em 3em;
+    margin: 0 auto;
+    text-align:center;
+    font-family: courier, monospace;
+    line-height: 1.4;
+    background:#fafafa;
+    }
+  textarea {
+    font-family: courier, monospace;
+    font-size:1em;
+    width: 100%;
+    padding: 0.5em;
+    }
+  textarea.output {
+    border: 1px dashed #999;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+<script src="../src/to-markdown.js"></script>
+<script>
+  $(function(){
+    var $input = $('.input');
+    function updateOutput() {
+      $('.output').text(toMarkdown($input.val()));
+    }
+    updateOutput();
+    $input.keyup(function() {
+      updateOutput();
+    });
+  });
+</script>
+</head>
+<body>
+    <h1><a href="https://github.com/domchristie/to-markdown">to-markdown.js</a></h1>
+    <h3>HTML Input</h3>
+    <textarea class="input" cols="100" rows="20"><h3>Some HTML</h3>
+<p><strong>Hello world!</strong> This demonstrates <a href="https://github.com/domchristie/to-markdown">to-markdown.js</a> – an HTML to Markdown converter.</p>
+<hr />
+<ol>
+    <li>Number 1</li>
+    <li>Number Two</li>
+</ol>
+    </textarea>
+
+    <h3>Markdown Output</h3>
+    <textarea class="output" cols="100" rows="20" class="output"></textarea>
+</body>
+</html>
