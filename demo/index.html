@@ -5,23 +5,27 @@
 <title>to-markdown.js - an HTML to Markdown converter written in JavaScript</title>
 <link rel="stylesheet" href="normalise.css"></link>
 <style>
-  body {
-    padding:1em 3em;
-    margin: 0 auto;
-    text-align:center;
-    font-family: courier, monospace;
-    line-height: 1.4;
-    background:#fafafa;
-    }
-  textarea {
-    font-family: courier, monospace;
-    font-size:1em;
-    width: 100%;
-    padding: 0.5em;
-    }
-  textarea.output {
-    border: 1px dashed #999;
-    }
+body {background:#fafafa; font-family:helvetica, sans-serif; font-size:100%; line-height:1.4em; padding:2em 0; margin:0;}
+a {color:#09F; font-weight:bold;}
+h1.mainheading {color:#333; text-align:center;}
+h1 {font-size:2em; margin-top:0;}
+h2.boxheading {letter-spacing:0.1em; color:#333; margin-bottom:0; padding:20px 10px 0.25em; text-transform:uppercase; font-size:100%;}
+button#reset {display:block; float:left; margin-top:3.2em;}
+table {border:1px solid #eee; border-collapse:collapse;}
+th, td {border:1px solid #eee; padding:0.25em;}
+th {background:#eee;}
+textarea {line-height:1.4em; background:#fff;}
+#mdtext {width:100%; min-height:180em; font-size:90%; font-family:monospace; border:0; border-top:1px dotted #ddd; border-right:1px dotted #ddd;  border-bottom:1px dotted #ddd; padding:10px;}
+#result {height:100%; overflow:visible; background:#fafafa; font-size:90%; /*border-top:1px dotted #ddd;*/ padding:10px; margin:0 0 0 21px; border:0; font-family:monospace;}
+pre#result-src {width:90%; min-height:500px; font-family:monospace; overflow:scroll;  background:#eee; clear:both; padding:10px; overflow:hidden; white-space:normal; border-top:1px solid #ddd; border-right:1px solid #fff; border-bottom:1px solid #fff; border-left:1px solid #ddd; margin-left:10px;} 
+#result img {width: auto; height:auto;}
+div.footnotes hr {display:none;}
+div.footnotes {border-top:dotted #ccc 1px; margin-top:1em;}
+footer {margin-top:2em; padding:0 1em 1em; border-top:double #eee;}
+
+.normal {font-weight:normal;}
+.quiet {color:#999;}
+.clearfix {clear:both;}
 </style>
 <script src="jquery.min.js"></script>
 <script src="to-markdown.js"></script>
@@ -39,18 +43,44 @@
 </script>
 </head>
 <body>
-    <h1><a href="https://github.com/domchristie/to-markdown">to-markdown.js</a></h1>
-    <h3>HTML Input</h3>
-    <textarea class="input" cols="100" rows="20"><h3>Some HTML</h3>
+    
+     <a id="top"></a>
+        <!-- HEADER -->
+            <header>
+              <!-- <a style="float:right;" id="forkme_banner" href="https://github.com/tanakahisateru/js-markdown-extra">Fork Me on GitHub</a> -->
+
+              <h1 class="mainheading"><a href="https://github.com/domchristie/to-markdown">to-markdown.js</a></h1>
+
+              <div style="float:left; width:50%; text-align:center; background:#ffc;">
+                  <p><b>1)</b> HTML Input &darr;</p>
+              </div>
+
+              <div style="float:right; width:50%; text-align:center; background:#ffc;">
+                  <p><b>2)</b> <a href="http://daringfireball.net/projects/markdown/" onclick="window.open(this.href, this.target); return false;" title="The overriding design goal for Markdown’s formatting syntax is to make it as readable as possible. The idea is that a Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions. While Markdown’s syntax has been influenced by several existing text-to-HTML filters, the single biggest source of inspiration for Markdown’s syntax is the format of plain text email. —Open a new window to read more about Markdown's philosophy.">Markdown</a> Output &darr;</p>
+              </div>
+              
+            </header>
+
+<!-- MAIN CONTENT -->
+<section style="clear:both;">
+<div style="float:left; width:50%;">
+                <!-- <h2 class="boxheading" style="float:left;">HTML Input <small class="normal quiet">(enter html here)</small></h2> -->
+
+<textarea id="mdtext" class="input">
+<h3>Some HTML</h3>
 <p><strong>Hello world!</strong> This demonstrates <a href="https://github.com/domchristie/to-markdown">to-markdown.js</a> – an HTML to Markdown converter.</p>
 <hr />
 <ol>
     <li>Number 1</li>
     <li>Number Two</li>
 </ol>
-    </textarea>
+</textarea>
+</div>
+<div style="float:right; width:50%;">
+    <!-- <h2 class="boxheading" style="margin-bottom:1px; padding-left:30px;">Markdown Output<small class="normal quiet"></small></h2> -->
+    <textarea id="result" cols="100" rows="20" class="output"></textarea>
+</div>
 
-    <h3>Markdown Output</h3>
-    <textarea class="output" cols="100" rows="20" class="output"></textarea>
+
 </body>
 </html>
